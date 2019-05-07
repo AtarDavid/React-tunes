@@ -2,7 +2,7 @@ import React from "react";
 
 import SearchBar from "./Components/Search-Bar";
 import TrackList from "./Components/Track-List";
-import TrackListItem from "./Components/Track-List-Item";
+//import TrackListItem from "./Components/Track-List-Item";
 
 class App extends React.Component {
   state = {
@@ -38,8 +38,8 @@ class App extends React.Component {
         {tracks ? (
           <TrackList tracks={tracks} />
         ) : (
-          <div>Search to find music</div>
-        )}
+            <div>Search to find music</div>
+          )}
       </div>
     );
   }
