@@ -10,6 +10,18 @@
 - App-Logic-Component
   - Should be in charge of network requests etc.
 
+## New tasks
+
+- New components:   
+    - track counter  
+    - music player  
+
+- Style the UI 
+    - Design using SCSS
+
+- Intial State
+    - When the app start show an artist/track
+
 ## Hints
 
 - Feel free to copy your html and css from previous exercise
