@@ -7,8 +7,12 @@ import TrackList from "./Components/Track-List";
 class App extends React.Component {
   state = {
     tracks: null,
-    searchTerm: ""
+    searchTerm: "Joy Division"
   };
+
+  componentDidMount() {
+    this.searchForMusic()
+  }
 
   onSearchInputChange = e => {
     e.persist();
