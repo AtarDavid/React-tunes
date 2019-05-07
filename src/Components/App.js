@@ -1,28 +1,47 @@
-import React, { Component } from 'react';
-import SearchBar from './SearchBar';
-import Tracklist from './Tracklist';
-import '../assets/css/style.css';
+import React from "react";
 
-export default class App extends Component {
+import SearchBar from "./SearchBar";
+import TrackList from "./Tracklist";
+
+class App extends React.Component {
+  state = {
+    tracks: null,
+    searchTerm: ""
+  };
+
+  onSearchInputChange = e => {
+    e.persist();
+    const searchTerm = e.target.value;
+    this.setState({ searchTerm }, () => {
+      if (searchTerm.length > 2) {
+        this.searchForMusic();
+      }
+    });
+  };
+
+  searchForMusic = (searchTerm = this.state.searchTerm) => {
+    console.log("Searching ", searchTerm);
+    fetch(`https://dci-fbw12-search-itunes.now.sh/?term=${searchTerm}`)
+      .then(response => response.json())
+      .then(data => this.setState({ tracks: data.results }));
+  };
+
   render() {
+    const { tracks, searchTerm } = this.state;
     return (
-
       <div className="App">
-        <header className="App-header">
-          <div className="title">
-            <h2>The Sound of </h2>
-            <h1>Nick Cave</h1>
-            <p>Data from iTunes</p>
-          </div>
-          <SearchBar />
-        </header >
-        <main className="App-main">
-          <Tracklist />
-          <div id="player">
-
-          </div>
-        </main >
-      </div >
-    )
+        <SearchBar
+          onSearchInputChangeHandler={this.onSearchInputChange}
+          searchTerm={searchTerm}
+        />
+        {tracks ? (
+          <TrackList tracks={tracks} />
+        ) : (
+            <div>Search to find music</div>
+          )}
+      </div>
+    );
   }
 }
+
+export default App;
