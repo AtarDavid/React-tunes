@@ -7,6 +7,7 @@ const TrackList = props => {
   console.log(tracks);
   return (
     <div className="tracklist">
+      <h1>The sound of React</h1>
       {tracks.map((trackInfo, index) => (
         <TrackListItem trackInfo={trackInfo} key={index} />
       ))}

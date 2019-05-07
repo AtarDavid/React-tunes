@@ -8,7 +8,9 @@ const TrackListItem = props => {
     trackPrice,
     currency,
     trackId,
-    artworkUrl100
+    artworkUrl100,
+    releaseDate,
+
   } = props.trackInfo;
 
   return (
@@ -24,6 +26,9 @@ const TrackListItem = props => {
       <div>
         {trackPrice === -1 ? "Only album" : trackPrice}
         {currency === "USD" ? (trackPrice === -1 ? "" : "$") : "€"}
+      </div>
+      <div>
+        {new Date(releaseDate).toLocaleDateString()}
       </div>
       <div>
         <i className="fas fa-play" id={trackId} />

@@ -38,7 +38,7 @@ class App extends React.Component {
         {tracks ? (
           <TrackList tracks={tracks} />
         ) : (
-            <div>Search to find music</div>
+            <h1>The sound of React</h1>
           )}
       </div>
     );
